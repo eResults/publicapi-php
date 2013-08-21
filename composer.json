@@ -1,5 +1,5 @@
 {
-    "name": "cpanel/publicapi",
+    "name": "eresults/publicapi",
     "type": "library",
     "description": "cPanel PublicAPI PHP client and cPanel PHP library",
     "keywords": ["cpanel", "api", "whm"],
