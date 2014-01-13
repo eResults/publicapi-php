@@ -739,11 +739,13 @@ abstract class Cpanel_Query_Http_Abstract extends Cpanel_Core_Object
             throw new Exception('curlQuery requires a QueryObject argument');
         }
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        // Timeout when cPanel completely fails eg. disk quota generation can fail
+        curl_setopt($curl, CURLOPT_TIMEOUT, 30 );
         // Return contents of transfer on curl_exec
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         // Allow self-signed certs
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         // Increase buffer size to avoid "funny output" exception
         curl_setopt($curl, CURLOPT_BUFFERSIZE, 131072);
         // Pass authentication header
